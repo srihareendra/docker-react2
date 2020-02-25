@@ -1,0 +1,8 @@
+FROM node:alpine
+WORKDIR '/app'
+COPY package.json .
+RUN npm config set registry https://artifacthub-tip.oraclecorp.com/api/npm/npmjs-remote
+RUN npm install
+RUN npm install invariant warning --save
+COPY . .
+CMD ["npm","run","start"]
